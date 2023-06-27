@@ -31,7 +31,7 @@ resource "google_compute_instance" "sqlserver1-1" {
 	
   }
 
-metadata-from-file=windows-startup-script-ps1="c:\scripts\createdb.ps1"
+metadata-from-file=sysprep-specialize-script-ps1="c:\scripts\createdb.ps1"
 
   min_cpu_platform = "Automatic"
   name             = "sqlserver1-1"
