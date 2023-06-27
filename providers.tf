@@ -12,7 +12,5 @@ provider "google" {
   project = "groovy-karma-388506"
   region  = "us-central1"
   zone    = "us-central1-a"
-  metadata = {
-    enable-oslogin : "TRUE"
-  }
+
 }
