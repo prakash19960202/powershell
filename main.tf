@@ -4,9 +4,10 @@
 resource "google_compute_instance" "sqlserver1-2" {
   boot_disk {
     auto_delete = true
-    device_name = "sqlserver1"
+    device_name = "sqlserver"
 
     initialize_params {
+ 	sourceImage = "projects/groovy-karma-388506/global/images/sqlserver1",
       size = 50
       type = "pd-balanced"
     }
