@@ -1,21 +1,18 @@
 # This code is compatible with Terraform 4.25.0 and versions that are backwards compatible to 4.25.0.
 # For information about validating this Terraform code, see https://developer.hashicorp.com/terraform/tutorials/gcp-get-started/google-cloud-platform-build#format-and-validate-the-configuration
 
-resource "google_compute_instance" "sqlserver1-1" {
+resource "google_compute_instance" "sqlserver1-2" {
   boot_disk {
     auto_delete = true
-   device_name = "sqlserver1-1"
+    device_name = "sqlserver"
 
     initialize_params {
-	Disk source = "From machine image"
-  	device_name = "sqlserver"
       size = 50
       type = "pd-balanced"
     }
 
     mode = "READ_WRITE"
   }
-
   can_ip_forward      = false
   deletion_protection = false
   enable_display      = false
@@ -37,7 +34,7 @@ resource "google_compute_instance" "sqlserver1-1" {
 
 
   min_cpu_platform = "Automatic"
-  name             = "sqlserver1-1"
+  name             = "sqlserver1-2"
 
   network_interface {
     access_config {
