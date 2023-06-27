@@ -7,7 +7,7 @@ resource "google_compute_instance" "sqlserver1-2" {
     device_name = "sqlserver"
 
     initialize_params {
- 	image = sqlserver1
+ 	image = "sqlserver/sqlserver1"
       size = 50
       type = "pd-balanced"
     }
