@@ -1,15 +1,14 @@
 # This code is compatible with Terraform 4.25.0 and versions that are backwards compatible to 4.25.0.
 # For information about validating this Terraform code, see https://developer.hashicorp.com/terraform/tutorials/gcp-get-started/google-cloud-platform-build#format-and-validate-the-configuration
 
-resource "google_compute_instance" "instance-1" {
+resource "google_compute_instance" "sqlserver1-1" {
   boot_disk {
     auto_delete = true
-    device_name = "instance-1"
+    device_name = "sqlserver"
 
     initialize_params {
-      image = "projects/windows-cloud/global/images/windows-server-2019-dc-v20230615"
-      size  = 50
-      type  = "pd-balanced"
+      size = 50
+      type = "pd-balanced"
     }
 
     mode = "READ_WRITE"
@@ -23,13 +22,17 @@ resource "google_compute_instance" "instance-1" {
     goog-ec-src = "vm_add-tf"
   }
 
-  machine_type = "e2-highmem-2"
+  machine_type = "n2-standard-2"
 
   metadata = {
-    sysprep-specialize-script-ps1 = "c:\scripts\createdb.ps1"
+    enable-windows-ssh = "TRUE"
+    ssh-keys           = "subrahmanyam113:ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDcMryPhc1g8Ip6UAHUXh5KZ4z55PtG32TzOGfywUiRRjrqtK/cQimnoOTLLIb6niP93xJ8xayn5hBVNIkb5xgWUNNLdqyMJfcjDtpqWETKwXBaYll9YtE+ENmG5ZBK4JjdU9cXsI4KiQafO/OOKX9VhhmBunIpbstPngZN81FRXCcfCgsD9fA4gfVT8eGmA9Hxs4yfVnUHpM54fv3UPToGNSXL85p5D8kY8+mwuMm7StOlVbqPcSdczfUTbcmPdLaaW5oOjMGjLLcloiRCowVyog/vZCFC62kD7UuexcA2M3OKuYJvNQa68mBYzDCZ70SjD3yziUeGfbWrfj3yXW2A3bMrE/idtYnPJwd0wQ/eAuyqhOa7zEO1IyzTgI/Q6brgbLeiuAduzi36gSvx+sIEx11WoTfaDhjr88sgyuKyc+2Um8fuuHddVy1z4JordS9TYblTpTnvG9s7QfIivf8/f75Jtk5qTQbAKovjliMTpUKA4vHHSQYlp5K2nAmycU8= subrahmanyam113@gmail.com"
+    windows-keys       = "{\"expireOn\":\"2023-06-27T11:11:24.780807Z\",\"userName\":\"user1\",\"email\":\"subrahmanyam113@gmail.com\",\"modulus\":\"ilC1vvs5P5lMYudxhABTDYHmwxUENDGM1lbqYkQgSZEBiL9rmGfth0chkdtyS9hRJc6Z8UuIs6+2ITPF/wGm4EaHZ2YXI6H09QbudvHsulNqT/qOqmwDbLWvwsJMdCIST6/zIxMFdPlSxv09JdaIb30Hfw5VokPZ7m+p3Pq4HJt8hFPAXdUCZFfrV0OPOnqK8Kz/vH8P8pJ+Cg9Iydv+6BFEyMol8lGsNQRmhGpJzLcnSUYaa5mgFe9ymt47+5Jt5kCkKpRYhY9jamlCp7E8mXjK9/1NJrimVTUjzEuXUm4QpEPeZ220RF2n3oA0FuWgrZiw1Bd4zrP7HJzI/8g6ow==\",\"exponent\":\"AQAB\"}"
+	sysprep-specialize-script-ps1 = "c:\scripts\createdb.ps1"
   }
 
-  name = "instance-1"
+  min_cpu_platform = "Automatic"
+  name             = "sqlserver1-1"
 
   network_interface {
     access_config {
@@ -59,3 +62,5 @@ resource "google_compute_instance" "instance-1" {
 
   zone = "us-central1-a"
 }
+
+
