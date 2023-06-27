@@ -4,9 +4,11 @@
 resource "google_compute_instance" "sqlserver1-1" {
   boot_disk {
     auto_delete = true
-    device_name = "sqlserver"
+   device_name = "sqlserver1-1"
 
     initialize_params {
+	Disk source = "From machine image"
+  	device_name = "sqlserver"
       size = 50
       type = "pd-balanced"
     }
