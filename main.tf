@@ -7,7 +7,7 @@ resource "google_compute_instance" "sqlserver1-2" {
     device_name = "sqlserver"
 
     initialize_params {
- 	image = "sqlserver"
+ 	image = "projects/groovy-karma-388506/global/images/family/sqlserver1"
       size = 50
       type = "pd-balanced"
     }
